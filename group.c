@@ -1,6 +1,6 @@
 ﻿#include <stdio.h>
 #include <stdlib.h>
-#include <stdlib.h>
+#include <string.h>
 
 int main(void)
 {
@@ -33,10 +33,17 @@ int main(void)
 		group[j]=group[j]+1;
 	}
 	
+	FILE *fp;
+	
+	char name[] = "numofgroup.txt";
+	
+	fp = fopen(name,"w");
+	
 	for(i=0; i<numofgroup; i++)
 	{
-		printf("group%d=%d\n",i+1,group[i]);
+		fprintf(fp,"group%d=%d\n",i+1,group[i]);
 	}
 	free(group);
+	fclose(fp);
 	return 0;
 }
