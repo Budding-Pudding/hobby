@@ -29,7 +29,7 @@ int main(void)
 	
 	for(i=0; i<numofstu; i++)
 	{	
-		j=rand()%6+1;
+		j=rand()%numofgroup;
 		group[j]=group[j]+1;
 	}
 	
