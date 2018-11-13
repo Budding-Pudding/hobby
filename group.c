@@ -7,14 +7,11 @@ int main(void)
 	int i,j;
 	int pips,me;
 	int seed;
-	int d[6]={0};
 	int numofstu = 100;
 	int numofgroup = 16;
 	int array[200]={0};
-	int dice[6]={1,2,3,4,5,6};
-	int group[numofgroup];
-	int *SN;
-	SN = (int *)calloc(numofgroup,sizeof(int));
+	int *group;
+	group = (int *)calloc(numofgroup,sizeof(int));
 	printf("input the seed number\n");
 	scanf("%d", &seed);
 	srand(seed);
@@ -32,18 +29,14 @@ int main(void)
 	
 	for(i=0; i<numofstu; i++)
 	{	
-		for(j=0; j<6; j++)
-		{
-			if(array[i]==dice[j])
-			{
-				d[j]=d[j]+1;
-			}
-		}
+		j=rand()%6+1;
+		group[j]=group[j]+1;
 	}
 	
 	for(i=0; i<numofgroup; i++)
 	{
-		d[i]=SN[i];
-		printf("group%d=%d\n",i+1,SN[i]);
+		printf("group%d=%d\n",i+1,group[i]);
 	}
+	free(group);
+	return 0;
 }
