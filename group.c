@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
+ 
 int main(void)
 {
 /////////////////////////////////////////////////////
@@ -14,20 +14,26 @@ int main(void)
 	int seed;
 /////////////////////////////////////////////////////
 	//to hold the number of students
-	int numofstu = 100;
+	int numofstu;
 /////////////////////////////////////////////////////
 	//to hold the number of groups
-	int numofgroup = 16;
+	int numofgroup;
+/////////////////////////////////////////////////////
+	printf("input the number of students\n");
+	scanf("%d", &numofstu);
+	printf("input the number of groups\n");
+	scanf("%d", &numofgroup);
+	printf("input the seed number\n");
+	scanf("%d", &seed);
 /////////////////////////////////////////////////////
 	//to remember the pips&students
-	int array[200]={0};
+	int *array;
+	array = (int *)calloc(numofstu,sizeof(int));
 /////////////////////////////////////////////////////
 	//to make ensur of memories(maybe don't need)
 	int *group;
 	group = (int *)calloc(numofgroup,sizeof(int));
 /////////////////////////////////////////////////////
-	printf("input the seed number\n");
-	scanf("%d", &seed);
 	srand(seed);
 	for(i=0; i<numofstu; i++)
 	{
@@ -58,6 +64,8 @@ int main(void)
 		fprintf(fp,"group%d=%d\n",i+1,group[i]);
 	}
 	free(group);
+	free(array);
 	fclose(fp);
 	return 0;
 }
+ 
